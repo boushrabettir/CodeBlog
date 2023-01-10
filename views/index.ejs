@@ -1,23 +1,8 @@
 <html lang = 'en'>
-    <head>
-        <meta charset = 'UTF-8'>
-        <meta name = 'viewport' content = 'width = device - width, intial-scale = 1.0'>
-        <title>Blog | <%= title %></title>
-    </head>
+    <%- include('./partials/header.ejs')%>
     <body>
 
-        <nav>
-            <div class = 'title-container'>
-                <a href = '/'><h1>Korvine Blog</h1></a>
-                <p>The Next Korean News</p>
-            </div>
-
-            <ul>
-                <li><a href = '/'>Blogs</a></li>
-                <li><a href = '/about'>Blogs</a></li>
-                <li><a href = '/blogs/create'>Create</a></li>
-            </ul>
-        </nav>
+      <%- include('./partials/navigate.ejs')%> <!-- when we use = sign it escapes speacial characters and get string instread of raw html-->
 
 
     <div class = 'blogs content'>
@@ -32,6 +17,7 @@
         <% } %> 
     </div>
 
+    <%- include('./partials/footer.ejs')%>
     </body>
 
 </html>
