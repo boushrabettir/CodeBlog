@@ -1,0 +1,39 @@
+<html lang = 'en'>
+    <head>
+        <meta charset = 'UTF-8'>
+        <meta name = 'viewport' content = 'width = device - width, intial-scale = 1.0'>
+        <title>Blog | <%= title %></title>
+    </head>
+    <body>
+        
+
+
+        <nav>
+            <div class = 'title-container'>
+                <a href = '/'><h1>Korvine Blog</h1></a>
+                <p>The Next Korean News</p>
+            </div>
+
+            <ul>
+                <li><a href = '/'>Blogs</a></li>
+                <li><a href = '/about'>Blogs</a></li>
+                <li><a href = '/blogs/create'>Create</a></li>
+            </ul>
+        </nav>
+
+
+    <div class = 'create-blog content'>
+        <form>
+            <label for = 'title'>Blog Title: </label>
+            <input type = 'text' id = 'title' required>
+            <label for = 'snip'>Blog Snippit: </label>
+            <input type = 'text' id = 'snip' required>
+            <label for = 'body'>Blog body: </label>
+            <textarea id = 'body' required></textarea>
+            <button>Submit</button>
+        </form>
+    </div>
+
+    </body>
+
+</html>

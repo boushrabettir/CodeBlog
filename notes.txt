@@ -1,0 +1,112 @@
+DAY 1:
+
+const filesystem = require('fs');
+
+// reading files  VVV
+filesystem.readFile('./Pracitce/blog1.txt', (e, data) => {
+    if(e){
+        console.error(e);
+    }
+    console.log(data.toString());
+    //asyncronous function!
+});
+
+
+//write files VVV
+
+filesystem.writeFile('./Pracitce/blog1.txt', 'Hello word!', () => {
+    console.log('file was written!');
+
+});
+
+//make a directories VV
+if(!filesystem.existsSync('./assets')) {// sync method
+
+filesystem.mkdir('./assets', (e) => {
+    if(e){
+        console.error(e);
+    }
+    console.log('done');
+
+});
+} else {
+    filesystem.rmdir('./assets', (e) => {
+        if(e)
+            console.error(e);
+    });
+}
+
+----
+
+//console.log(global);
+
+setTimeout(() => {
+    console.log('in the time out');
+}, 1000);
+
+const int = setInterval(() => {
+    console.log('in the set out');
+}, 1000);
+
+---
+
+const peoples = ['yoshi', 'sara', 'lill'];
+const age = [12, 45, 23];
+console.log(peoples);
+
+module.exports =  {
+    peoples: peoples,
+    ages: age
+    // or peoples 
+    // ages
+};
+
+----
+
+const {ages } = require('./peopl'); //runs code
+//returning an empty object
+//cant access elements even if imported unless manually exported
+
+console.log(ages);
+
+const os = require('os');
+
+console.log(os.platform(), os.homedir());
+
+-----
+
+const fs = require('fs');
+
+const readStream = fs.createReadStream('./Pracitce/blog1.txt', {encoding : 'utf8'});
+const writeStream = fs.createWriteStream('./Pracitce/blog4.txt');
+
+
+/*readStream.on('data', (buffer) => { //data event, everytime we recieve a buffer of data
+    console.log('new chunk -------------------------------------------');
+    console.log(buffer);
+    writeStream.write('\nNEW CHUNK\n');
+    writeStream.write(buffer); //passing data into blog 4
+});*/
+
+//pipes from readable stream to writable stream
+readStream.pipe(writeStream);
+
+-
+
+
+
+
+DAY 2
+
+
+
+
+ //lodash
+    const num = _.random(0, 20); 
+    console.log(num);
+
+    const greet = _.once(() =>{
+        console.log('hello');
+    });
+
+    greet();
