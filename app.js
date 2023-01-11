@@ -12,9 +12,18 @@ app.listen(3000); //infers local host
 
 app.get('/', (req, res) => {
     const blogs = [
-        {title: 'Hi', snip: 'this one'},
-        {title: 'Hi4', snip: 'this on4e'},
-        {title: 'Hi34', snip: 'this on3e'},
+    {
+        title: 'Hi', 
+        snip: 'this one'
+    },
+    {
+        title: 'Hi4', 
+        snip: 'this on4e'
+    },
+    {
+        title: 'Hi34', 
+        snip: 'this on3e'
+    },
     ];
     //send a response to the browser/user
     //automatically does content type header-- and does sets status code 
