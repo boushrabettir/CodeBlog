@@ -110,3 +110,57 @@ DAY 2
     });
 
     greet();
+
+    -------
+
+
+
+
+
+
+
+    app.get('/add-blog', (req, res) => {
+    const blogInstance = new Blog({
+        title: 'New Blog 3',
+        snip: 'About new blog',
+        body: 'More about this blog'
+    }); // here we are using the model to create a new instance
+
+    blogInstance.save() //asynchronous task
+        .then((results) =>{
+            res.send(results);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+});
+
+app.get('/all-blogs', (req,res) => {
+    Blog.find()
+        .then((results) => {
+            res.send(results);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+
+app.get('/single-blog', (req, res) => {
+    Blog.findById('63c23c8b6fa66162a87a4242')
+    .then((results) => {
+        res.send(results);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+});
+
+
+
+
+
+//redirects!
+
+/*app.get('/about-me', (req,res) => {
+    res.redirect('/about');
+});*/

@@ -1,34 +1,40 @@
 const express = require('express');
+const morgamMiddleWare = require('morgan');
+const mongoose = require('mongoose');
+const Blog = require('./model/blog');
+
 
 //express invoke app
 const app = express(); //invoking function to create an instance of an express app
+const mongoDB = 'mongodb+srv://BoushraBlog:boushrabettir@blogexpress.np7shhg.mongodb.net/blogs?retryWrites=true&w=majority';
+async function ConnectionMongo() {
+    try {
+      await mongoose.connect(mongoDB);
+      app.listen(3000); //infers local host
+      console.log('connected to mongo');
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
+  ConnectionMongo(); // asynchrnous similar to promises
+//connecting to mongodb database
 //register veiw engine
 app.set('view engine', 'ejs');
 
-
 // listening requests
-app.listen(3000); //infers local host
+
+//middleware and static files(static = css, images)
+app.use(express.static('public')); // now we can access files as well, non changeable
+//app.use(morgamMiddleWare('tiny'));
+
+
+
+//mongoose and mongo sandbox routs to save and get data
 
 app.get('/', (req, res) => {
-    const blogs = [
-    {
-        title: 'Hi', 
-        snip: 'this one'
-    },
-    {
-        title: 'Hi4', 
-        snip: 'this on4e'
-    },
-    {
-        title: 'Hi34', 
-        snip: 'this on3e'
-    },
-    ];
-    //send a response to the browser/user
-    //automatically does content type header-- and does sets status code 
-    //res.sendFile('./Page/index.html', { root: __dirname}); //dirname curent directory -- root is this folder
-    res.render('index', { title: 'Home', blogs: blogs}); //render it and sent it back to browser
+ //do seperate home page
+ res.redirect('/blogs'); // this is just a holder
 
 });
 
@@ -39,16 +45,19 @@ app.get('/about', (req, res) => {
 
 });
 
+app.get('/blogs', (req, res) => {
+    Blog.find().sort({ createdAt: -1 }) // decedomg order, newewst
+    .then((results) => {
+        res.render('index', {title: 'All blogs', blogs: results});
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+});
+
 app.get('/blogs/create', (req, res) => {
     res.render('create', { title: 'create'});
 });
-
-//redirects!
-
-/*app.get('/about-me', (req,res) => {
-    res.redirect('/about');
-});*/
-
 
 //404
 

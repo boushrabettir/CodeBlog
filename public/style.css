@@ -1,0 +1,39 @@
+:root {
+    background-color: #74828F;
+    margin: 30px;
+}
+
+.title-container {
+    line-height: 45px;
+    justify-content: space-around;
+
+    
+}
+
+.title-container a{
+    text-decoration: none;
+}
+
+.title-container ul {
+   display: flex;
+   font-size: 20px;
+   justify-content: space-evenly;
+}
+
+.title-container #link {
+    background-color: rgb(4, 8, 39);
+    color: rgb(216, 204, 204);
+    padding:3px 15px 3px 15px;
+   
+    border-radius: 5px;
+    display: flex;
+}
+
+.title-container  h1 {
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: 800;
+    text-align: center;
+    color: #22242c;
+}
+
