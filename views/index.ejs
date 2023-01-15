@@ -1,4 +1,5 @@
 <html lang = 'en'>
+
     <%- include('./partials/header.ejs')%>
     <body>
 
@@ -9,24 +10,25 @@
     </div>
       <div class = 'blogs content'>
        
-       
         <% if(blogs.length > 0) { %>
         <% blogs.forEach(blog => { %>
             <div class = 'singular-blog'>
             <a class = 'links blog-container' href = '/blogs/<%= blog._id %>'>
-                <img class = 'img' src = './images/<%= blog.image %>'>
-                <h3 class = 'name'><%= blog.title %></h3>   
-                <p class = 'snip'><%= blog.snip %></p>   
+               <!--Imags go here-->
+                <h3 class = 'name'><%= blog.title %></h3> 
+                <p><%=  moment(blog.date).format("MM/DD/YY") %>  </p>
+                <p class = 'snip'><%= blog.snip%></p>   
             </a>
-    </div>
+        </div>
 
         <% }) %>
        <% } else { %>
-            <p>no blogs! sip your coffee and wait for the next one.</p>
+            <p id = 'noblog'>Sip your coffee and wait for the next one! ☕🥐 Typing away...</p>
         <% } %> 
     </div>
 
     <%- include('./partials/footer.ejs')%>
+    
     </body>
 
 </html>

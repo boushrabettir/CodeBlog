@@ -1,14 +1,19 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
+
 const Schema = mongoose.Schema; //define structure / documents in a collection 
 const blogSchema = new Schema({ //creating an instance of a schema
 //similar to oop
-    _id: {
-       type: mongoose.Schema.Types.ObjectId,
-       required: true
+    image: {
+        type: Buffer,
+        required: true
     },
     title:  {
         type: String,
         required: true
+    },
+    date:{
+        type: Date,
     },
     snip: {
         type: String,

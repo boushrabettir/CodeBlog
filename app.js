@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const Blog = require('./model/blog');
 const { render } = require('ejs');
 const { result } = require('lodash');
+const moment = require('moment');
+const multerImg = require('multer');
+
 
 
 //express invoke app
@@ -48,10 +51,12 @@ app.get('/about', (req, res) => {
 
 });
 
+
+
 app.get('/blogs', (req, res) => {
     Blog.find().sort({ createdAt: -1 }) // decedomg order, newewst
     .then((results) => {
-        res.render('index', {title: 'All Blogs', blogs: results});
+        res.render('index', {title: 'All Blogs', blogs: results, moment: moment});
     })
     .catch((error) => {
         console.log(error);
@@ -59,48 +64,28 @@ app.get('/blogs', (req, res) => {
 });
 
 app.post('/blogs', (req, res) => {
-   const blog = new Blog(req.body);
-
-   blog.save()
+   const blog_new = new Blog(req.body);
+   blog_new.save()
    .then((results) => {
       res.redirect('/');
    })
    .catch((error) => {
     console.log(error);
-   });
+   })
 });
-
-app.get('/images/:id', (req, res) => {
-  const id = req.params.id;
-  Blog.findById(id)
-    .then((blog) => {
-      console.log(blog._id); // this will log the id of the image
-      res.contentType(blog.image.contentType);
-      res.send(blog.image.type);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(404).send('Image not found');
-    })
-});
-
-app.get('/blogs/:id', (req, res) => {
-  const id = req.params.id;
-  Blog.findById(id)
-    .then((results) => {
-      res.render('detail', {blog : results, title: 'Blog Details'})
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-
-});
-
-
-
 app.get('/blogs/create', (req, res) => {
   res.render('create', { title: 'Create'});
 });
+
+
+app.get('/blogs/:id', async (req, res) => {
+ const id = await Blog.findById(req.params.id);
+ res.render('detail', {blog : id, title: 'Blog Details'})
+
+});
+
+
+
 //404
 
 app.use((req, res) => { //for every single request if all the requests have not been matched (MUST go at bottom)
