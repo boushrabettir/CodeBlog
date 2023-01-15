@@ -4,13 +4,22 @@
 
       <%- include('./partials/navigate.ejs')%> <!-- when we use = sign it escapes speacial characters and get string instread of raw html-->
 
-
-    <div class = 'blogs content'>
-        <h2>All Blogs</h2>
+      <div class = 'about'>
+      <h2>Welcome to Path Less Traveled, my personal blog where I share my thoughts, insights and experiences on anything and everything. From travel, personal growth, to pop culture, I cover a wide range of topics. Here you will find a unique perspective on life and the world around us. I strive to inspire and entertain my readers by sharing my own journey and lessons learned. Join me on this Path Less Traveled and discover new perspectives. Update regularly, check back often. Thanks for visiting!</h2>
+    </div>
+      <div class = 'blogs content'>
+       
+       
         <% if(blogs.length > 0) { %>
         <% blogs.forEach(blog => { %>
-            <h3 class = 'name'><%= blog.title %></h3>   
-            <p class = 'snip'><%= blog.snip %></p>  
+            <div class = 'singular-blog'>
+            <a class = 'links blog-container' href = '/blogs/<%= blog._id %>'>
+                <img class = 'img' src = './images/<%= blog.image %>'>
+                <h3 class = 'name'><%= blog.title %></h3>   
+                <p class = 'snip'><%= blog.snip %></p>   
+            </a>
+    </div>
+
         <% }) %>
        <% } else { %>
             <p>no blogs! sip your coffee and wait for the next one.</p>

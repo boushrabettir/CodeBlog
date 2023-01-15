@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema; //define structure / documents in a collection 
 const blogSchema = new Schema({ //creating an instance of a schema
 //similar to oop
+    _id: {
+       type: mongoose.Schema.Types.ObjectId,
+       required: true
+    },
     title:  {
         type: String,
         required: true
@@ -16,6 +20,7 @@ const blogSchema = new Schema({ //creating an instance of a schema
     }
 
 }, { timestamps: true });
+
 
 const Blog = mongoose.model('Blog', blogSchema); //should be a signular of a collection name for Blog by defining the name as a sinfgular
 module.exports = Blog;

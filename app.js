@@ -2,6 +2,8 @@ const express = require('express');
 const morgamMiddleWare = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./model/blog');
+const { render } = require('ejs');
+const { result } = require('lodash');
 
 
 //express invoke app
@@ -26,7 +28,8 @@ app.set('view engine', 'ejs');
 
 //middleware and static files(static = css, images)
 app.use(express.static('public')); // now we can access files as well, non changeable
-//app.use(morgamMiddleWare('tiny'));
+app.use(express.urlencoded({ extended: true })); // all the url encoded data and passes into obejct for request post
+app.use(morgamMiddleWare('tiny'));
 
 
 
@@ -48,17 +51,56 @@ app.get('/about', (req, res) => {
 app.get('/blogs', (req, res) => {
     Blog.find().sort({ createdAt: -1 }) // decedomg order, newewst
     .then((results) => {
-        res.render('index', {title: 'All blogs', blogs: results});
+        res.render('index', {title: 'All Blogs', blogs: results});
     })
     .catch((error) => {
         console.log(error);
     });
 });
 
-app.get('/blogs/create', (req, res) => {
-    res.render('create', { title: 'create'});
+app.post('/blogs', (req, res) => {
+   const blog = new Blog(req.body);
+
+   blog.save()
+   .then((results) => {
+      res.redirect('/');
+   })
+   .catch((error) => {
+    console.log(error);
+   });
 });
 
+app.get('/images/:id', (req, res) => {
+  const id = req.params.id;
+  Blog.findById(id)
+    .then((blog) => {
+      console.log(blog._id); // this will log the id of the image
+      res.contentType(blog.image.contentType);
+      res.send(blog.image.type);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(404).send('Image not found');
+    })
+});
+
+app.get('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+  Blog.findById(id)
+    .then((results) => {
+      res.render('detail', {blog : results, title: 'Blog Details'})
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+
+});
+
+
+
+app.get('/blogs/create', (req, res) => {
+  res.render('create', { title: 'Create'});
+});
 //404
 
 app.use((req, res) => { //for every single request if all the requests have not been matched (MUST go at bottom)
