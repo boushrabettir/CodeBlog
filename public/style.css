@@ -1,6 +1,5 @@
 :root {
-    background-color: #6a6868;
-    text-decoration: none;
+    background-color: rgb(210, 210, 175);
     --light-blue: #C7C9FF;  
     --dark-blue: rgb(38, 38, 68);
     --bright-white: white;
@@ -9,13 +8,31 @@
     --black: black;
 }
 
+@media screen and (min-width:1000px){
 
 html, body {
-
     margin: 0;
     position: relative;
     
-  }
+}
+
+.entire-page {
+    background-color: rgba(85, 99, 85, 0.8);
+    box-shadow: 0 0 30px rgb(110, 110, 87);
+    margin:8em;
+    padding: 50px;
+    border-radius: 50px;
+}  
+
+.about {
+    display: flex;
+    justify-content: center;  
+}
+
+img {
+    max-width:540px;
+    height: 540px;
+}
 
 a {
     text-decoration: none;
@@ -23,7 +40,6 @@ a {
 
 nav {
     width: 100%;
-    
 }
 
 .title-container {
@@ -31,17 +47,16 @@ nav {
     align-items: center;
     justify-content: space-between;
     margin: 20px 65px 30px 65px;
-    font-family: 'Sofia Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .title-container h1 {
     font-size:120px;
     line-height:100px;
-    color: var(--light-blue); 
-    transition: all 200ms ease-in-out;
+    font-weight: 900;
+    color: var(--dark-blue); 
+    text-shadow: 0 0px 25px rgb(94, 94, 126);
 }
-
-
 
 #link {
     color: var(--dark-brown);
@@ -64,15 +79,16 @@ nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin:140px;
+    margin:10px;
+    padding: 120px;
     
 }
 
  .about h2 {
-    font-size: 23px;
+    font-size: 30px;
     max-width: 50%;
     margin-left: 90px;
-    line-height: 35px;
+    line-height: 40px;
     color: var(--bright-white);
     font-family: 'Lora', sans-serif;
 }
@@ -83,39 +99,42 @@ nav {
 
 .blog-container {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.52);
-    box-shadow: 0 5px 10px rgb(137, 133, 133);
-    padding: 70px 60px 40px 60px;
-    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 5px 15px rgba(45, 55, 44, 0.711);
+    padding: 70px 90px 40px 90px;
     border-radius: 15px;
     transition: all 300ms ease;
     font-family: 'Lora', sans-serif;
 }
 
 .singular-blog {
-    flex-basis: 30%;
+    flex-basis: 11%;
 }
 
 .blog-container:hover {
-    box-shadow: 0 5px 10px rgb(69, 66, 66);
+    box-shadow: 0 5px 15px rgb(35, 30, 30);
     transform: scale(1.07);
 }
 
 .blog-container .name {
-    font-size:30px;
+    font-size:45px;
     color: var(--dark-blue);
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 230px;
+   text-align: center;
+   
 }
 
 .blog-container .snip {
     color: var(--black);
-    max-width: 250px;
+    max-width: 450px;
     margin-left: auto;
     margin-right: auto;
     font-family: 'Barlow Semi Condensed', sans-serif;   
     font-size:20px;
+}
+
+#moment {
+    color: rgb(0, 0, 0);
+    font-weight: 600;
 }
 
 .detail {
@@ -129,12 +148,12 @@ nav {
     text-align: justify; 
     box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5); 
     font-family: 'Montserrat', sans-serif; 
-
-  }
+}
   
 .detail h2 {
     font-size: 40px;
 }
+
 .detail .content {
     font-size: 18px;
     line-height: 35px;
@@ -142,7 +161,7 @@ nav {
 
 #body {
     white-space: pre-line;
-  }
+}
 
 
 footer {
@@ -150,7 +169,6 @@ footer {
     color: #fff;
     padding: 20px 0px 10px 0px;
     margin-bottom: 0px;
-
     width: 100%;
     font-size: 20px;
     margin-top: 10em;
@@ -160,11 +178,10 @@ footer {
     justify-content: center;
     text-align: center;
     letter-spacing: 2px;
+}
 
-  }
 
-
-  #noblog {
+#noblog {
     text-transform: uppercase;
     font-family: 'Barlow Semi Condensed', sans-serif;   
     font-size: 30px;
@@ -173,21 +190,18 @@ footer {
     border-radius: 15px;
     box-shadow: 10px 12px 10px rgb(54, 53, 53);
     animation: popup 2.5s infinite;
-  }
+}
 
-  .dark {
-    background-color: pink;
-  }
-
-  @keyframes popup {
+@keyframes popup {
     0% {transform: scale(1) translate(4px, 7px);}
     50%{transform: scale(1.05) translate(-6px, -9px);}
     100%{transform: scale(1) translate(4px, 7px);}
-  }
+}
 
-  button {
+button {
     background: none;
     border: none;
     transform: scale(3);
     cursor: pointer;
-  }
+}
+}

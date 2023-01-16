@@ -4,8 +4,7 @@
         <%- include('./partials/navigate.ejs')%>
 
     <div class = 'create-blog content'>
-        <form enctype = "multipart/form-data" action = '/blogs' method = "POST">
-            <input type="file" name="image">
+        <form action = '/blogs' method = "POST">
             <label for = 'title'>Blog Title: </label>
             <input type = 'text' id = 'title' name = 'title' required>
             <label for = 'snip'>Blog Snippit: </label>

@@ -1,17 +1,14 @@
 <html lang = 'en'>
     <%- include('./partials/header.ejs')%>
     <body>
-
       <%- include('./partials/navigate.ejs')%> <!-- when we use = sign it escapes speacial characters and get string instread of raw html-->
-
+      
         <div class = 'blog detail'>
             <h2><%= blog.title %></h2>
             <div class = 'content'>
                 <p id = 'body'><%= blog.body %></p>
             </div>
         </div>
-
     <%- include('./partials/footer.ejs')%>
-    </body>
-
+</body>
 </html>
