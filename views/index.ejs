@@ -9,7 +9,10 @@
       <h2>Welcome to Path Less Traveled, my personal blog where I share my thoughts, insights and experiences on anything and everything. From travel, personal growth, to pop culture, I cover a wide range of topics. Here you will find a unique perspective on life and the world around us. I strive to inspire and entertain my readers by sharing my own journey and lessons learned. Join me on this Path Less Traveled and discover new perspectives. Update regularly, check back often. Thanks for visiting!</h2>
 
     </div>
+    <div class = 'entire-blog-container'>
+    <h1 id = 'all-blogs-title'> All Blogs</h1>
       <div class = 'blogs content'>
+        
         <% if(blogs.length > 0) { %>
         <% blogs.forEach(blog => { %>
             <div class = 'singular-blog'>
@@ -26,6 +29,7 @@
         <% } %> 
     </div>
   </div>
+</div>
     <%- include('./partials/footer.ejs')%>
 </body>
 </html>

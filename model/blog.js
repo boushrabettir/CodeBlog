@@ -15,7 +15,7 @@ const blogSchema = new Schema({ //creating an instance of a schema
         type: String,
         required: true
     },
-    body: {
+    htmlContent: {
         type: String,
         required: true
     }

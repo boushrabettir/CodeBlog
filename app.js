@@ -6,12 +6,47 @@ const { render } = require('ejs');
 const { result } = require('lodash');
 const moment = require('moment');
 const multerImg = require('multer');
+const markdownIt = require('markdown-it');
+const matterMarkdown = require('gray-matter');
+const fs = require('fs');
+const path = require('path');
+
 
 const app = express(); //invoking function to create an instance of an express app
 const mongoDB = 'mongodb+srv://BoushraBlog:boushrabettir@blogexpress.np7shhg.mongodb.net/blogs?retryWrites=true&w=majority';
 async function ConnectionMongo() { 
     try {
       await mongoose.connect(mongoDB);
+
+      const mdDirectory = './markdown';
+      fs.readdir(mdDirectory, (error, file) => {
+        if(error){
+          console.error(error);
+        } else {
+          file.forEach(file => {
+            if(path.extname(file) === '.md'){
+              const markdownFile = fs.readFileSync(path.join(mdDirectory, file));
+              const data = matterMarkdown(markdownFile);
+              const md = new markdownIt();
+              const htmlContent = md.render(data.content);
+              Blog.findOne({title: data.data.title, htmlContent : htmlContent}, (error, blog) => {
+                if(error){
+                  console.error(error);
+                } else if (!blog){
+                  const blog = new Blog({
+                    title: data.data.title,
+                    date: data.data.date,
+                    snip: data.data.snip,
+                    body: data.body,
+                    htmlContent : htmlContent,
+                  });
+                  blog.save();
+                }
+              });
+            }
+          });
+        }
+      });
       app.listen(3000); //infers local host
       console.log('connected to mongo');
     } catch (error) {
@@ -59,10 +94,6 @@ app.post('/blogs', (req, res) => {
    .catch((error) => {
     console.log(error);
    })
-});
-
-app.get('/blogs/create', (req, res) => {
-  res.render('create', { title: 'Create'});
 });
 
 

@@ -8,19 +8,17 @@
     --black: black;
 }
 
-@media screen and (min-width:1000px){
 
 html, body {
     margin: 0;
     position: relative;
-    
 }
 
 .entire-page {
     background-color: rgba(85, 99, 85, 0.8);
     box-shadow: 0 0 30px rgb(110, 110, 87);
-    margin:8em;
-    padding: 50px;
+    margin:10em;
+    padding: 60px;
     border-radius: 50px;
 }  
 
@@ -30,12 +28,27 @@ html, body {
 }
 
 img {
-    max-width:540px;
-    height: 540px;
+    max-width:510px;
+    height: 510px;
 }
 
 a {
     text-decoration: none;
+}
+.entire-blog-container {
+    padding: 20px;
+    background-color: rgb(69, 84, 75);
+    border-radius: 15px;
+}
+
+#all-blogs-title {
+   text-align: center; 
+   font-size: 80px;
+   font-weight: 800;
+   font-family: 'Roboto', sans-serif; 
+   color: var(--bright-white);
+   letter-spacing: 5px;
+   text-transform: uppercase;
 }
 
 nav {
@@ -46,12 +59,12 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px 65px 30px 65px;
+    margin: 20px 65px 10px 65px;
     font-family: 'Roboto', sans-serif;
 }
 
 .title-container h1 {
-    font-size:120px;
+    font-size:100px;
     line-height:100px;
     font-weight: 900;
     color: var(--dark-blue); 
@@ -85,7 +98,7 @@ nav {
 }
 
  .about h2 {
-    font-size: 30px;
+    font-size:20px;
     max-width: 50%;
     margin-left: 90px;
     line-height: 40px;
@@ -95,16 +108,20 @@ nav {
 
 .blogs .singular-blog {
     display: flex;
+    margin: 5px;
+
 }
 
 .blog-container {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0 5px 15px rgba(45, 55, 44, 0.711);
-    padding: 70px 90px 40px 90px;
+    width: 230px;
+    padding: 30px;
     border-radius: 15px;
     transition: all 300ms ease;
     font-family: 'Lora', sans-serif;
+    margin:0;
 }
 
 .singular-blog {
@@ -117,9 +134,10 @@ nav {
 }
 
 .blog-container .name {
-    font-size:45px;
+    font-size:26px;
     color: var(--dark-blue);
    text-align: center;
+   max-width: 750px;
    
 }
 
@@ -129,7 +147,7 @@ nav {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Barlow Semi Condensed', sans-serif;   
-    font-size:20px;
+    font-size:15px;
 }
 
 #moment {
@@ -139,8 +157,7 @@ nav {
 
 .detail {
     background-color: rgba(245, 245, 245, 0.7);
-    color: var(--dark-brown);
-    max-width: 45%;
+    max-width: 35%;
     font-weight: 600; 
     margin: 50px auto; 
     padding: 100px 150px;
@@ -201,7 +218,7 @@ footer {
 button {
     background: none;
     border: none;
-    transform: scale(3);
+    margin: 10px;
+    transform: scale(4);
     cursor: pointer;
-}
 }

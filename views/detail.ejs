@@ -5,9 +5,9 @@
       
         <div class = 'blog detail'>
             <h2><%= blog.title %></h2>
-            <div class = 'content'>
-                <p id = 'body'><%= blog.body %></p>
-            </div>
+
+                <%- blog.htmlContent %>
+  
         </div>
     <%- include('./partials/footer.ejs')%>
 </body>
