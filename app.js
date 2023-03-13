@@ -2,8 +2,8 @@ const express = require('express');
 const morgamMiddleWare = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./model/blog');
-const { render } = require('ejs');
-const { result } = require('lodash');
+const ejs = require('ejs');
+const lodash = require('lodash');
 const moment = require('moment');
 const multerImg = require('multer');
 const markdownIt = require('markdown-it');
@@ -57,7 +57,6 @@ ConnectionMongo();
 //connecting to mongodb database
 //register veiw engine
 app.set('view engine', 'ejs');
-
 // listening requests
 
 //middleware and static files

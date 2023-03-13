@@ -4,13 +4,11 @@
     <body>
       <%- include('./partials/navigate.ejs')%> <!-- when we use = sign it escapes speacial characters and get string instread of raw html-->
 
-      <div class = 'about'>
-        <img src = '/images/blog.png'>
-      <h2>Welcome to Path Less Traveled, my personal blog where I share my thoughts, insights and experiences on anything and everything. From travel, personal growth, to pop culture, I cover a wide range of topics. Here you will find a unique perspective on life and the world around us. I strive to inspire and entertain my readers by sharing my own journey and lessons learned. Join me on this Path Less Traveled and discover new perspectives. Update regularly, check back often. Thanks for visiting!</h2>
-
-    </div>
+      <!-- <div class = 'about'>
+        <h2>Welcome to Path Less Traveled, my personal blog where I share my thoughts, insights and experiences on anything and everything. From travel, personal growth, to pop culture, I cover a wide range of topics. Here you will find a unique perspective on life and the world around us. I strive to inspire and entertain my readers by sharing my own journey and lessons learned. Join me on this Path Less Traveled and discover new perspectives. Update regularly, check back often. Thanks for visiting!</h2>
+      </div> -->
     <div class = 'entire-blog-container'>
-    <h1 id = 'all-blogs-title'> All Blogs</h1>
+    <h1 class = 'all-blogs-title'> All Blogs</h1>
       <div class = 'blogs content'>
         
         <% if(blogs.length > 0) { %>
@@ -19,7 +17,7 @@
             <a class = 'links blog-container' href = '/blogs/<%= blog._id %>'>
                <!--Imags go here-->
                 <h3 class = 'name'><%= blog.title %></h3> 
-                <p id = 'moment'><%=  moment(blog.date).format("MM/DD/YY") %>  </p>
+                <label class = 'moment'><%=  new Date().toLocaleDateString('en-US') %>  </label><br/>
                 <p class = 'snip'><%= blog.snip%></p>   
             </a>
         </div>
@@ -31,5 +29,6 @@
   </div>
 </div>
     <%- include('./partials/footer.ejs')%>
+    
 </body>
 </html>
